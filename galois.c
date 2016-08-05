@@ -11,14 +11,14 @@ void gal_print(gal8 a);             /* Print an element of GF(2^8) in binary for
 int hamming_norm(int a);            /* Number of nonzero bits in a */
 int hamming_distance(int a, int b); /* Number of different bits between a and b */
 
-galint gal_add(galint a, galint b)
+gal8 gal_add(gal8 a, gal8 b)
 {
     return a ^ b;
 }
 
-galint gal_mul(galint a, galint b)
+gal8 gal_mul(gal8 a, gal8 b)
 {
-    galint res = 0;
+    gal8 res = 0;
     for (; b; b >>= 1) {
         if (b & 1)
             res ^= a;
@@ -30,7 +30,7 @@ galint gal_mul(galint a, galint b)
     return res;
 }
 
-void gal_print(galint a)
+void gal_print(gal8 a)
 {
     int i = 8;
     while (i--)
@@ -55,7 +55,7 @@ int hamming_distance(int a, int b)
 int main()
 {
     int i = 0, c = 0;
-    galint a = 1;
+    gal8 a = 1;
     while (i++ < 256) {
         /*
         gal_print(a);
