@@ -5,8 +5,8 @@
  */
 
 #include <stdio.h>
-#include <stdint.h>
 #include <unistd.h> /* for sleep */
+#include "galois.h"
 
 typedef uint8_t gal8;
              
