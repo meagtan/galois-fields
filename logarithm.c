@@ -2,17 +2,17 @@
 
 #include "galois.h"
 
-galint gal_exp(int n);
-int gal_log(galint a);
+gal8 gal_exp(int n);
+int gal_log(gal8 a);
 
-static galint exps[255], logs[255]; /* Exponent and logarithm tables linked to each other by way of indices and pointers */
+static gal8 exps[255], logs[255]; /* Exponent and logarithm tables linked to each other by way of indices and pointers */
 static int calculated = 0;
 
 static void setup_tables();
 
 void setup_tables()
 {
-    galint a = 1;
+    gal8 a = 1;
     int i;
     for (i = 0; i < 255; ++i) {
         a = gal_mul(a, generator);
@@ -21,7 +21,7 @@ void setup_tables()
     }
 }
 
-galint gal_exp(int n)
+gal8 gal_exp(int n)
 {
     if (!calculated) {
         setup_tables();
@@ -30,7 +30,7 @@ galint gal_exp(int n)
     return exps[n % 255] - logs + 1;
 }
 
-int gal_log(galint a)
+int gal_log(gal8 a)
 {
     if (!calculated) {
         setup_tables();
