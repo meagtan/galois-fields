@@ -2,6 +2,9 @@
 
 #include "galois.h"
 
+extern gal8 gal_mul(gal8 a, gal8 b);
+extern void gal_print(gal8 a);
+
 gal8 gal_mul_fast(gal8 a, gal8 b); /* Fast multiplication */
 gal8 gal_div_fast(gal8 a, gal8 b); /* Fast division */
 
@@ -9,7 +12,10 @@ gal8 gal_pow(gal8 b, int e); /* b ^ e */
 gal8 gal_exp(int n);         /* generator ^ n */
 int gal_log(gal8 a);         /* Return 0 ≤ n ≤ 254 such that generator ^ n = a */
 
-static gal8 exps[255], logs[255]; /* Exponent and logarithm tables linked to each other by way of indices and pointers */
+/* Exponent and logarithm tables linked to each other by way of indices */
+static gal8 exps[255];
+static int  logs[255];
+
 static int calculated = 0;
 
 static void setup_tables();
@@ -20,8 +26,8 @@ void setup_tables()
     int i;
     for (i = 0; i < 255; ++i) {
         a = gal_mul(a, generator);
-        exps[i] = logs + a - 1;
-        logs[a - 1] = exps + i;
+        exps[i] = a - 1;
+        logs[a - 1] = i;
     }
 }
 
@@ -46,7 +52,7 @@ gal8 gal_exp(int n)
         setup_tables();
         calculated = 1;
     }
-    return exps[n % 255] - logs + 1;
+    return exps[n % 255];
 }
 
 int gal_log(gal8 a)
@@ -55,5 +61,5 @@ int gal_log(gal8 a)
         setup_tables();
         calculated = 1;
     }
-    return logs[a - 1] - exps;
+    return logs[a - 1];
 }
