@@ -25,9 +25,9 @@ void setup_tables()
     gal8 a = 1;
     int i;
     for (i = 0; i < 255; ++i) {
-        a = gal_mul(a, generator);
         exps[i] = a - 1;
         logs[a - 1] = i;
+        a = gal_mul(a, generator);
     }
 }
 
