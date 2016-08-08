@@ -1,14 +1,14 @@
 /* Memoized discrete exponentiation and logarithm */
 
-typedef unsigned char galint;
+#include "galois.h"
 
-extern galint generator;
+galint gal_exp(int n);
+int gal_log(galint a);
+
 static galint exps[255], logs[255]; /* Exponent and logarithm tables linked to each other by way of indices and pointers */
 static int calculated = 0;
 
 static void setup_tables();
-galint gal_exp(int n);
-int gal_log(galint a);
 
 void setup_tables()
 {
