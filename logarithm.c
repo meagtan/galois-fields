@@ -52,7 +52,7 @@ gal8 gal_exp(int n)
         setup_tables();
         calculated = 1;
     }
-    return exps[n % 255];
+    return exps[n % 255] + 1;
 }
 
 int gal_log(gal8 a)
