@@ -2,6 +2,7 @@
 
 #include "galois.h"
 
+gal8 gal_pow(gal8 b, int e);
 gal8 gal_exp(int n);
 int gal_log(gal8 a);
 
@@ -19,6 +20,11 @@ void setup_tables()
         exps[i] = logs + a - 1;
         logs[a - 1] = exps + i;
     }
+}
+
+gal8 gal_pow(gal8 b, int e)
+{
+    return gal_exp(gal_log(b) * e);
 }
 
 gal8 gal_exp(int n)
