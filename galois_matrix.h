@@ -3,6 +3,8 @@
  * The generator of the finite field is simply the companion matrix of the minimal polynomial x^8 + x^4 + x^3 + x^2 + 1,
  * or its transpose. The arithmetic in this finite field is usual matrix arithmetic.
  */
+
+#include "galois.h"
              
 const gal8 gener[8] = {1, 0x80, 0x40 + 1, 0x20 + 1, 0x10 + 1, 8, 4, 2}, /* companion matrix of min_poly */
            gentr[8] = {0x40, 0x20, 0x10, 8, 4, 2, 1, 0b10111000}, /* transpose of gener */
