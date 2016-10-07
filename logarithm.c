@@ -2,6 +2,14 @@
 
 #include "logarithm.h"
 
+/* Exponent and logarithm tables linked to each other by way of indices */
+static gal8 exps[255];
+static int  logs[255];
+
+static int calculated = 0;
+
+static void setup_tables();
+
 void setup_tables()
 {
     gal8 a = 1;
