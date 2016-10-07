@@ -9,12 +9,6 @@
 #include <stdio.h>
 #include "galois.h"
 
-gal8 gal_add(gal8 a, gal8 b);       /* Add two elements of GF(2^8) */
-gal8 gal_mul(gal8 a, gal8 b);       /* Multiply two elements of GF(2^8) */
-void gal_print(gal8 a);             /* Print an element of GF(2^8) in binary form */
-int hamming_norm(int a);            /* Number of nonzero bits in a */
-int hamming_distance(int a, int b); /* Number of different bits between a and b */
-
 int main()
 {
     int i = 0, c = 0;
